@@ -26,7 +26,7 @@ class idea(models.Model):
     owner = fields.Many2one('res.partner', 'Owner', index=True, readonly=True, states={'draft': [('readonly', False)]})
 
     voting_ids = fields.One2many('idea.voting', 'idea_id', string='Votes')
-    total_yes = fields.Integer("Yes", compute="_compute_vote", store=True, default=0)
+    total_yes = fields.Integer("Yes", compute="_compute_vote", store=True, default=88)
     total_no = fields.Integer("No", compute="_compute_vote", store=True, default=0)
     total_abstain = fields.Integer("Abstain", compute="_compute_vote", store=True, default=0)
 

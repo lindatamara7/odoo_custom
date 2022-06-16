@@ -15,7 +15,7 @@
                             <group>
                                 <field name="name"/>
                                 <field name="namaitem"/>
-<!--                                <field name="jumlah"/>-->
+                                <field name="jml"/>
                                 <field name="harga"/>
                             </group>
                         </group>
