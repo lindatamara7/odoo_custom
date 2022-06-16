@@ -1,0 +1,53 @@
+<odoo>
+    <record id="supplier_view_form" model="ir.ui.view">
+            <field name="name">supplier.view.form</field>
+            <field name="model">uas.supplier</field>
+            <field name="arch" type="xml">
+                <form string="Supplier form">
+                    <header>
+                        <button name="action_settodraft" string="Set to Draft" states="canceled" type="object" class="btn-primary"/>
+                        <button name="action_confirmed" string="Confirm" states="draft" type="object" class="btn-primary"/>
+                        <button name="action_canceled" string="Cancel" states="confirmed" type="object" class="btn-primary" groups="sales_team.group_sale_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="namasup"/>
+                                <field name="alamat"/>
+
+                            </group>
+                            <group>
+                                <field name="tlp"/>
+                                <field name="email"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <record id="supplier_view_list" model="ir.ui.view">
+        <field name="name">supplier.view.list</field>
+        <field name="model">uas.supplier</field>
+        <field name="arch" type="xml">
+            <tree string="Supplier list">
+                <field name="name"/>
+                <field name="namasup"/>
+                <field name="alamat"/>
+                <field name="tlp"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="supplier_action" model="ir.actions.act_window">
+        <field name="name">supplier</field>
+        <field name="res_model">uas.supplier</field>
+<!--        <field name="view_id" ref="employee_view_list"/>-->
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="ujian_menu" name="Ujian" sequence="10"/>
+    <menuitem id="supplier_menu" parent="uas.ujian_menu" name="Supplier" action="supplier_action" sequence="10"/>
+</odoo>

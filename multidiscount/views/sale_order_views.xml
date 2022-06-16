@@ -18,15 +18,4 @@
             </field>
         </field>
     </record>
-
-<!--    <record id="sale_order_view_form_invisible1" model="ir.ui.view">-->
-<!--        <field name="name">sale.order.view.form.invisible1</field>-->
-<!--        <field name="model">sale.order</field>-->
-<!--        <field name="inherit_id" ref="sale_management.sale_order_form_quote"/>-->
-<!--        <field name="arch" type="xml">-->
-<!--             <field name="sale_order_template_id" position="attributes">-->
-<!--                <attribute name="invisible">True</attribute>-->
-<!--            </field>-->
-<!--        </field>-->
-<!--    </record>-->
 </odoo>

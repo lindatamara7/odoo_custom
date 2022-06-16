@@ -1,0 +1,48 @@
+<odoo>
+    <record id="item_view_form" model="ir.ui.view">
+            <field name="name">item.view.form</field>
+            <field name="model">uas.item</field>
+            <field name="arch" type="xml">
+                <form string="Item form">
+                    <header>
+                        <button name="action_settodraft" string="Set to Draft" states="canceled" type="object" class="btn-primary"/>
+                        <button name="action_confirmed" string="Confirm" states="draft" type="object" class="btn-primary"/>
+                        <button name="action_canceled" string="Cancel" states="confirmed" type="object" class="btn-primary" groups="sales_team.group_sale_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="namaitem"/>
+<!--                                <field name="jumlah"/>-->
+                                <field name="harga"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+    <record id="item_view_list" model="ir.ui.view">
+        <field name="name">item.view.list</field>
+        <field name="model">uas.item</field>
+        <field name="arch" type="xml">
+            <tree string="Item list">
+                <field name="name"/>
+                <field name="namaitem"/>
+                <field name="harga"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="item_action" model="ir.actions.act_window">
+        <field name="name">item</field>
+        <field name="res_model">uas.item</field>
+<!--        <field name="view_id" ref="employee_view_list"/>-->
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="ujian_menu" name="Ujian" sequence="10"/>
+    <menuitem id="item_menu" parent="uas.ujian_menu" name="Item" action="item_action" sequence="10"/>
+</odoo>

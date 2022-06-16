@@ -1,0 +1,65 @@
+<odoo>
+    <record id="transaksi2_view_form" model="ir.ui.view">
+            <field name="name">transaksi2.view.form</field>
+            <field name="model">uas.transaksi2</field>
+            <field name="arch" type="xml">
+                <form string="Transaksi form">
+                    <header>
+                        <button name="action_confirmed" string="Confirm" states="draft" type="object" class="btn-primary"/>
+                        <button name="action_settodraft" string="Set to Draft" states="canceled" type="object" class="btn-primary"/>
+                        <button name="action_done" string="Approve" states="confirmed" type="object" class="btn-primary"/>
+                        <button name="action_canceled" string="Cancel" states="confirmed,done" type="object"
+                                class="btn-primary" groups="sales_team.group_sale_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="employee_ids"/>
+                                <field name="supplier_ids"/>
+                                <field name="delivery_ids"/>
+                                <field name="date_tr"/>
+<!--                                <field name="total"/>-->
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Detail transaksi" name="detail2">
+                                <field name="detail2_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="transaksi2_ids"/>
+                                        <field name="item_ids"/>
+                                        <field name="jumlah"/>
+                                        <field name="subtotal" sum="Subtotal"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+    <record id="transaksi2_view_list" model="ir.ui.view">
+        <field name="name">transaksi2.view.list</field>
+        <field name="model">uas.transaksi2</field>
+        <field name="arch" type="xml">
+            <tree string="Transaksi list">
+                <field name="name"/>
+                <field name="employee_ids"/>
+                <field name="supplier_ids"/>
+                <field name="date_tr"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="transaksi2_action" model="ir.actions.act_window">
+        <field name="name">transaksi2</field>
+        <field name="res_model">uas.transaksi2</field>
+<!--        <field name="view_id" ref="transaksi2_view_list"/>-->
+        <field name="view_mode">tree,form</field>
+    </record>
+        <menuitem id="ujian_menu" name="Ujian" sequence="10"/>
+        <menuitem id="transaksi2_menu" parent="uas.ujian_menu" name="Transaksi" action="transaksi2_action" sequence="10"/>
+</odoo>
