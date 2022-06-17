@@ -22,7 +22,7 @@ class item(models.Model):
     def _compute_jumlah(self):
         for i in self:
             val = {
-                "jml": 15,
+                "jml": 0,
             }
 
             for j in i.detail2_ids:
